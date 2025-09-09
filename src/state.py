@@ -28,9 +28,9 @@ class BlogState:
     urls: List[str] = field(default_factory=list)
     sections: list[Section] = field(default_factory=list) 
     completed_sections: Annotated[list, operator.add]
-    blog_main_body_sections: str = field(default=None)
-    final_blog: str = field(default=None)
-    user_instructions: str = field(default=None)
+    blog_main_body_sections: str | None = field(default=None)
+    final_blog: str | None = field(default=None)
+    user_instructions: str | None = field(default=None)
     
 @dataclass(kw_only=True)
 class BlogStateInput:
@@ -39,14 +39,14 @@ class BlogStateInput:
 
 @dataclass(kw_only=True)
 class BlogStateOutput:
-    final_blog: str = field(default=None)
+    final_blog: str | None = field(default=None)
 
 @dataclass(kw_only=True)
 class SectionState:
     section: Section
-    user_instructions: str = field(default=None)
+    user_instructions: str | None = field(default=None)
     urls: List[str] = field(default_factory=list)
-    blog_main_body_sections: str = field(default=None)
+    blog_main_body_sections: str | None = field(default=None)
     completed_sections: list[Section] = field(default_factory=list)
     
 @dataclass(kw_only=True)

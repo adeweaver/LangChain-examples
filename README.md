@@ -1,23 +1,22 @@
-# Robo-Blogger: AI-Powered Blog Generation with LangGraph
-
-An intelligent blog writing system that uses LangGraph to orchestrate complex AI workflows for generating high-quality, research-backed blog posts.
+# Robo-Blogger: AI-Powered Blog Generation with LangGraph and WRITER
 
 ## 🚀 Overview
 
-Robo-Blogger is a sophisticated AI-powered content generation system that:
+Robo-Blogger is a sophisticated AI-powered content generation system that combines **LangGraph** for workflow orchestration with **WRITER AI** for intelligent content generation:
 
-- **Plans blog structure** using AI to break down content into logical sections
+- **Plans blog structure** using WRITER's structured output capabilities to break down content into logical sections
 - **Researches topics** by scraping provided URLs for additional context
-- **Writes sections in parallel** using LangGraph's concurrent processing capabilities
+- **Writes sections in parallel** using LangGraph's concurrent processing with WRITER's palmyra-x5 model
 - **Compiles final content** into a complete, well-structured blog post
-- **Uses WRITER AI** as the underlying language model for content generation
+- **Leverages WRITER AI** for reliable, validated content generation with native structured output support
 
 ### Key Features
 
-- **Intelligent Planning**: AI analyzes notes and creates structured blog outlines
+- **Intelligent Planning**: WRITER AI analyzes notes and creates structured blog outlines using native structured output
 - **Web Research**: Automatically scrapes and incorporates information from provided URLs
-- **Parallel Processing**: Multiple sections written simultaneously for efficiency
-- **Structured Output**: Uses WRITER's native structured output for reliable, validated content generation
+- **Parallel Processing**: Multiple sections written simultaneously using LangGraph with WRITER's palmyra-x5 model
+- **WRITER Integration**: Leverages WRITER AI's ChatWriter interface for reliable, validated content generation
+- **Structured Output**: Uses WRITER's native structured output capabilities for consistent, well-formatted content
 - **Configurable**: Customizable blog structure and requirements
 
 ## 📋 Prerequisites
@@ -31,7 +30,7 @@ Robo-Blogger is a sophisticated AI-powered content generation system that:
 
 ### 1. Clone and Navigate to Project
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/adeweaver/LangChain-examples.git
 cd LangChain-examples
 ```
 
@@ -103,6 +102,8 @@ src/results/blog_20241201_143022.md
 
 ## 🎯 How It Works
 
+![Workflow Diagram](assets/flow_diagram.png)
+
 ### Workflow Overview
 
 1. **Blog Planning Phase**
@@ -121,68 +122,5 @@ src/results/blog_20241201_143022.md
 4. **Final Assembly Phase**
    - Writes introduction and conclusion using completed sections as context
    - Compiles all sections into final blog post
-
-
-## 📊 LangGraph Dashboard (LangSmith)
-
-### Enable Dashboard Observability
-
-To see your workflow in the LangGraph dashboard:
-
-1. **Get a LangSmith API Key**:
-   - Visit [LangSmith](https://smith.langchain.com/)
-   - Sign up/log in to your account
-   - Go to API Keys section
-   - Generate a new API key
-
-2. **Add to your `.env` file**:
-   ```
-   LANGCHAIN_TRACING_V2=true
-   LANGCHAIN_API_KEY=your_langsmith_api_key_here
-   LANGCHAIN_PROJECT=robo-blogger
-   ```
-
-3. **Run Your Workflow**:
-   ```bash
-   poetry run python src/main.py
-   ```
-
-4. **View in Dashboard**:
-   - Go to [LangSmith Dashboard](https://smith.langchain.com/)
-   - Navigate to the "robo-blogger" project
-   - See your workflow execution with step-by-step flow, timing, and error tracking
-
-## 📚 Advanced Usage
-
-### Custom Prompts
-Edit `src/prompts.py` to customize AI prompts for blog planning and section writing.
-
-### State Management
-The system uses LangGraph's state management for passing data between workflow steps and managing parallel section writing.
-
-### Adding New Features
-- **New Section Types**: Modify `state.py`
-- **Custom Research**: Extend `utils.py` for additional data sources
-- **Different Output Formats**: Modify the final compilation step in `graph.py`
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgments
-
-- **LangGraph**: For workflow orchestration capabilities
-- **WRITER AI**: For the underlying language model
-- **LangChain**: For the AI framework integration
-
----
 
 **Happy Blogging! 🚀**

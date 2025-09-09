@@ -1,7 +1,3 @@
-from ast import List
-import os
-import json
-
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.runnables import RunnableConfig
@@ -18,7 +14,6 @@ from prompts import (
 )
 from state import (
     Sections,
-    Section,
     BlogState,
     BlogStateInput,
     BlogStateOutput,
@@ -33,7 +28,7 @@ from utils import (
 
 load_dotenv()
 
-model = ChatWriter()
+model = ChatWriter(model='palmyra-x5')
 
 def generate_blog_plan(state: BlogState, config: RunnableConfig):
     """Generate the blog plan"""
@@ -59,6 +54,9 @@ def generate_blog_plan(state: BlogState, config: RunnableConfig):
     )
     
     report_sections = response.choices[0].message.parsed
+    
+    if report_sections is None:
+        raise ValueError("Failed to parse blog sections from response")
     
     print("\n" + "="*80)
     print("📋 BLOG PLAN GENERATED")
@@ -132,6 +130,8 @@ def gather_completed_sections(state: BlogState):
     """Gather completed main body sections"""
 
     completed_sections = state.completed_sections
+    if completed_sections is None:
+        completed_sections = []
     completed_report_sections = format_sections(completed_sections)
     
     print(f"\n📊 Gathered {len(completed_sections)} completed main body sections")
