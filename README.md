@@ -1,8 +1,8 @@
-# Robo-Blogger: AI-Powered Blog Generation with LangGraph and WRITER
+# AI-Powered Blog Generation with LangGraph and WRITER
 
 ## 🚀 Overview
 
-Robo-Blogger is a sophisticated AI-powered content generation system that combines **LangGraph** for workflow orchestration with **WRITER AI** for intelligent content generation:
+Blog Generator is a sophisticated AI-powered content generation system that combines **LangGraph** for workflow orchestration with **WRITER AI** for intelligent content generation:
 
 - **Plans blog structure** using WRITER's structured output capabilities to break down content into logical sections
 - **Researches topics** by scraping provided URLs for additional context
@@ -56,7 +56,7 @@ cp .env.template .env
 # Add to your .env file for dashboard observability:
 LANGCHAIN_TRACING_V2=true
 LANGCHAIN_API_KEY=your_langsmith_api_key_here
-LANGCHAIN_PROJECT=robo-blogger
+LANGCHAIN_PROJECT=blog-generator
 ```
 
 ## 🚀 Quick Start

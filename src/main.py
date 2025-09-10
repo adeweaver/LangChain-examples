@@ -10,7 +10,7 @@ input_data = BlogStateInput(
         "https://dev.writer.com/no-code/introduction"
     ])
 
-print("🚀 Starting Robo-Blogger...")
+print("🚀 Starting Blog Generator...")
 print(f"📝 Reading notes from: notes/workflows.txt")
 
 response = graph.invoke(input=input_data)
