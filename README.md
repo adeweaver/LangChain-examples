@@ -1,4 +1,4 @@
-# AI-Powered Blog Generation with LangGraph and WRITER
+# Blog Generator: AI-Powered Content Creation with LangGraph and WRITER AI
 
 ## 🚀 Overview
 
