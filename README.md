@@ -2,10 +2,9 @@
 
 ## 🚀 Overview
 
-This Article research & creation agent is a sophisticated AI-powered 
+This article research & creation agent is a sophisticated AI-powered 
 agent that transforms dictation into polished articles. Inspired by 
-[Lance's robo-blogger project](https://github.com/langchain-ai/
-robo-blogger), it combines **LangGraph** for workflow orchestration 
+[Lance's robo-blogger project](https://github.com/langchain-ai/robo-blogger), it combines **LangGraph** for workflow orchestration 
 with **WRITER** for intelligent research, analysis, and content 
 generation:
 
