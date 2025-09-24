@@ -1,23 +1,24 @@
-# Blog Generator: AI-Powered Content Creation with LangGraph and WRITER
+# Article research & creation agent: AI-powered research, analysis, and content generation with LangGraph and WRITER
 
 ## 🚀 Overview
 
-Blog Generator is a sophisticated AI-powered content generation system that combines **LangGraph** for workflow orchestration with **WRITER** for intelligent content generation:
-
-- **Plans blog structure** using WRITER's structured output capabilities to break down content into logical sections
-- **Researches topics** by scraping provided URLs for additional context
-- **Writes sections in parallel** using LangGraph's concurrent processing with WRITER's palmyra-x5 model
-- **Compiles final content** into a complete, well-structured blog post
-- **Leverages WRITER** for reliable, validated content generation with native structured output support
+This Article research & creation agent is a sophisticated AI-powered 
+agent that transforms dictation into polished articles. Inspired by 
+[Lance's robo-blogger project](https://github.com/langchain-ai/
+robo-blogger), it combines **LangGraph** for workflow orchestration 
+with **WRITER** for intelligent research, analysis, and content 
+generation:
 
 ### Key Features
 
-- **Intelligent Planning**: WRITER analyzes notes and creates structured blog outlines using native structured output
-- **Web Research**: Automatically scrapes and incorporates information from provided URLs
-- **Parallel Processing**: Multiple sections written simultaneously using LangGraph with WRITER's palmyra-x5 model
-- **WRITER Integration**: Leverages WRITER's ChatWriter interface for reliable, validated content generation
-- **Structured Output**: Uses WRITER's native structured output capabilities for consistent, well-formatted content
-- **Configurable**: Customizable blog structure and requirements
+- **Dictation to article**: Transforms voice dictation into polished articles
+- **Web research**: Scrapes and incorporates information from provided URLs
+- **Intelligent planning**: WRITER analyzes dictation notes and creates structured article outlines using native structured output
+structured article outlines using native structured output
+- **Parallel processing**: Multiple sections written simultaneously 
+using LangGraph with WRITER's Palmyra X5 model
+- **Structured output**: Uses WRITER's native structured output 
+capabilities for consistent, well-formatted content
 
 ## 📋 Prerequisites
 
@@ -28,30 +29,30 @@ Blog Generator is a sophisticated AI-powered content generation system that comb
 
 ## 🔧 Installation & Setup
 
-### 1. Clone and Navigate to Project
+### 1. Clone and navigate to project
 ```bash
 git clone https://github.com/adeweaver/LangChain-examples.git
 cd LangChain-examples
 ```
 
-### 2. Install Dependencies
+### 2. Install dependencies
 ```bash
 poetry install
 ```
 
-### 3. Set Up Environment Variables
+### 3. Set up environment variables
 
-#### Required: WRITER API Key
+#### Required: WRITER API key
 ```bash
 # Option A: Environment variable
-export WRITER_API_KEY="your_WRITER_api_key_here"
+export WRITER_API_KEY="your_WRITER_API_key_here"
 
 # Option B: .env file (recommended)
 cp .env.template .env
 # Edit .env file with your WRITER API key
 ```
 
-#### Optional: LangSmith API Key (for dashboard)
+#### Optional: LangSmith API key (for dashboard)
 ```bash
 # Add to your .env file for dashboard observability:
 LANGCHAIN_TRACING_V2=true
@@ -61,23 +62,22 @@ LANGCHAIN_PROJECT=blog-generator
 
 ## 🚀 Quick Start
 
-### 1. Prepare Your Blog Content
-Edit `src/notes/workflows.txt` with your blog topic:
+### 1. Prepare your dictation notes
+Edit `src/notes/workflows.txt` with your dictation content:
 ```bash
-# Example content for workflows.txt
-I want to write a blog post about WRITER workflows
+# Example content for workflows.txt (your voice dictation)
+I want to write an article about AI-powered content creation
 
-We get this question all the time at WRITER Framework
+We get this question all the time at our company
 
-A workflow is a sequence of connected blocks, where each block performs a specific action. 
-Think of it like a chain reaction - when one block completes its task, it triggers the next block in line.
+The key insight is that our best ideas often come when we're away from the keyboard - while walking, commuting, or right after a meeting.
 
-WRITER Workflows is currently in beta, which means we're still actively improving features and adding functionality.
+AI can help transform these raw thoughts into polished content while maintaining the authenticity of your original ideas.
 
-Workflows save time and effort by automating repetitive tasks.
+The workflow separates idea capture from content structuring, helping maintain the natural flow of thoughts while ensuring professional presentation.
 ```
 
-### 2. Add Research URLs (Optional)
+### 2. Add research URLs (optional)
 Edit `src/main.py` to add URLs for additional research context:
 ```python
 input_data = BlogStateInput(
@@ -89,13 +89,13 @@ input_data = BlogStateInput(
     ])
 ```
 
-### 3. Run the Blog Generator
+### 3. Run the article research & creation agent
 ```bash
 poetry run python src/main.py
 ```
 
-### 4. Find Your Generated Blog
-The blog will be saved to `src/results/` with a timestamp:
+### 4. Find your generated article
+The article will be saved to `src/results/` with a timestamp:
 ```
 src/results/blog_20241201_143022.md
 ```
@@ -104,23 +104,23 @@ src/results/blog_20241201_143022.md
 
 ![Workflow Diagram](assets/flow_diagram.png)
 
-### Workflow Overview
+### Workflow overview
 
-1. **Blog Planning Phase**
-   - Reads user notes from `src/notes/workflows.txt`
-   - Uses AI to create structured blog outline
+1. **Article planning phase**
+   - Reads dictation notes from `src/notes/workflows.txt`
+   - Uses AI to create structured article outline
    - Defines sections (introduction, main body, conclusion)
 
-2. **Research Phase**
+2. **Research phase**
    - Scrapes content from provided URLs
    - Extracts relevant information for each section
 
-3. **Parallel Writing Phase**
+3. **Parallel writing phase**
    - Writes main body sections concurrently
-   - Each section uses research data and user notes
+   - Each section uses research data and dictation notes
 
-4. **Final Assembly Phase**
+4. **Final assembly phase**
    - Writes introduction and conclusion using completed sections as context
-   - Compiles all sections into final blog post
+   - Compiles all sections into final article
 
-**Happy Blogging! 🚀**
+**Happy writing! 🚀**
