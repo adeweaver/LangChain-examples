@@ -1,21 +1,21 @@
-# Blog Generator: AI-Powered Content Creation with LangGraph and WRITER AI
+# Blog Generator: AI-Powered Content Creation with LangGraph and WRITER
 
 ## 🚀 Overview
 
-Blog Generator is a sophisticated AI-powered content generation system that combines **LangGraph** for workflow orchestration with **WRITER AI** for intelligent content generation:
+Blog Generator is a sophisticated AI-powered content generation system that combines **LangGraph** for workflow orchestration with **WRITER** for intelligent content generation:
 
 - **Plans blog structure** using WRITER's structured output capabilities to break down content into logical sections
 - **Researches topics** by scraping provided URLs for additional context
 - **Writes sections in parallel** using LangGraph's concurrent processing with WRITER's palmyra-x5 model
 - **Compiles final content** into a complete, well-structured blog post
-- **Leverages WRITER AI** for reliable, validated content generation with native structured output support
+- **Leverages WRITER** for reliable, validated content generation with native structured output support
 
 ### Key Features
 
-- **Intelligent Planning**: WRITER AI analyzes notes and creates structured blog outlines using native structured output
+- **Intelligent Planning**: WRITER analyzes notes and creates structured blog outlines using native structured output
 - **Web Research**: Automatically scrapes and incorporates information from provided URLs
 - **Parallel Processing**: Multiple sections written simultaneously using LangGraph with WRITER's palmyra-x5 model
-- **WRITER Integration**: Leverages WRITER AI's ChatWriter interface for reliable, validated content generation
+- **WRITER Integration**: Leverages WRITER's ChatWriter interface for reliable, validated content generation
 - **Structured Output**: Uses WRITER's native structured output capabilities for consistent, well-formatted content
 - **Configurable**: Customizable blog structure and requirements
 
@@ -67,7 +67,7 @@ Edit `src/notes/workflows.txt` with your blog topic:
 # Example content for workflows.txt
 I want to write a blog post about WRITER workflows
 
-We get this question all the time at WRITER AI Framework
+We get this question all the time at WRITER Framework
 
 A workflow is a sequence of connected blocks, where each block performs a specific action. 
 Think of it like a chain reaction - when one block completes its task, it triggers the next block in line.

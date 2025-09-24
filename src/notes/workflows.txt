@@ -1,8 +1,8 @@
-so I want to write a blog post about Writer workflows
+so I want to write a blog post about WRITER workflows
 
-we get this question all the time at Writer AI Framework
+we get this question all the time at WRITER Framework
 
-first the question is what actually is a Writer Workflows?
+first the question is what actually is a WRITER Workflows?
 
 A workflow is a sequence of connected blocks, where each block performs a specific action. Think of it like a chain reaction - when one block completes its task, it triggers the next block in line. Each connection between blocks can be either a success (green) or error (red) path, letting you control what happens next.
 
@@ -12,7 +12,7 @@ one simple definition or workflow blocks are wrappers over base operations prese
 
 there's a spectrum of workflows: HTTP Request Block, Set State Block, Return Value Block, Call Event Handler Block, For-Each Loop Block, Chat Completion Block, No-Code App Block, Completion Block, Parse JSON Block, Log Message Block
 
-Writer Workflows is currently in beta, which means we're still actively improving features and adding functionality.
+WRITER Workflows is currently in beta, which means we're still actively improving features and adding functionality.
 
 Workflows save time and effort by automating repetitive tasks. Once you set one up, it can run whenever needed, handling tasks consistently and reliably.
 
