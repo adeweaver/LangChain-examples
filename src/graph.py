@@ -4,7 +4,6 @@ from langchain_core.runnables import RunnableConfig
 from langchain_community.chat_models.writer import ChatWriter
 from langgraph.constants import Send
 from langgraph.graph import START, END, StateGraph
-from writerai import Writer
 
 import configuration
 from prompts import (
@@ -40,22 +39,38 @@ def generate_blog_plan(state: BlogState, config: RunnableConfig):
 
     sections_prompt = blog_planner_instructions.format(user_instructions=user_instructions, blog_structure=blog_structure)
 
-    client = Writer()
+    # Use the ChatWriter model to generate the blog plan
+    response = model.invoke([
+        SystemMessage(content="You are a blog planning assistant. Generate a structured blog plan based on the user's requirements. Respond with a JSON object containing a 'sections' array where each section has 'name', 'description', and 'main_body' fields."),
+        HumanMessage(content=sections_prompt)
+    ])
     
-    response = client.chat.parse(
-        model="palmyra-x5",
-        messages=[
-            {
-                "role": "user",
-                "content": sections_prompt,
-            }
-        ],
-        response_format=Sections,
-    )
+    # Parse the response manually since structured output might not work with ChatWriter
+    import json
+    import re
     
-    report_sections = response.choices[0].message.parsed
+    # Extract JSON from the response
+    response_text = response.content
     
-    if report_sections is None:
+    # Try to find JSON in the response - look for JSON block specifically
+    json_match = re.search(r'```json\s*(\{.*?\})\s*```', response_text, re.DOTALL)
+    if not json_match:
+        # Fallback: try to find JSON without code block markers
+        json_match = re.search(r'\{.*?"sections".*?\}', response_text, re.DOTALL)
+    
+    if json_match:
+        try:
+            json_data = json.loads(json_match.group(1) if json_match.groups() else json_match.group())
+            report_sections = Sections(**json_data)
+        except (json.JSONDecodeError, ValueError) as e:
+            print(f"Failed to parse JSON from response: {e}")
+            print(f"Response content: {response_text}")
+            raise ValueError("Failed to parse blog sections from response")
+    else:
+        print(f"No JSON found in response: {response_text}")
+        raise ValueError("Failed to parse blog sections from response")
+    
+    if report_sections is None or not hasattr(report_sections, 'sections'):
         raise ValueError("Failed to parse blog sections from response")
     
     print("\n" + "="*80)
@@ -77,7 +92,7 @@ def write_section(state: SectionState):
     urls = state.urls
     user_instructions = state.user_instructions
 
-    url_source_str = "" if not urls else load_and_format_urls(urls)
+    url_source_str = "" if not urls else load_and_format_urls(urls if isinstance(urls, list) else [urls])
 
     system_instructions = main_body_section_writer_instructions.format(section_name=section.name, 
                                                                        section_topic=section.description, 
@@ -86,7 +101,7 @@ def write_section(state: SectionState):
 
     section_content = model.invoke([SystemMessage(content=system_instructions)] + [HumanMessage(content="Generate a blog section based on the provided information.")])
     
-    section.content = section_content.content
+    section.content = section_content.content if isinstance(section_content.content, str) else str(section_content.content)
     
     print(f"✅ Completed: {section.name}")
 
@@ -104,7 +119,7 @@ def write_final_sections(state: SectionState):
 
     section_content = model.invoke([SystemMessage(content=system_instructions)] + [HumanMessage(content="Generate an intro/conclusion section based on the provided main body sections.")])
     
-    section.content = section_content.content
+    section.content = section_content.content if isinstance(section_content.content, str) else str(section_content.content)
     
     print(f"✅ Completed: {section.name}")
 

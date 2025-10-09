@@ -8,13 +8,13 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11"
-langgraph = "^0.2.61"
-langchain-community = "^0.3.14"
-langchain-anthropic = "^0.3.1"
-beautifulsoup4 = "^4.12.3"
-langchain = "^0.3.14"
-langchain-core = "^0.3.29"
-writer = "^0.8.2"
+langgraph = "^0.6.10"
+langchain-community = "^0.3.31"
+langchain-anthropic = "^0.3.22"
+beautifulsoup4 = "^4.14.2"
+langchain = "^0.3.27"
+langchain-core = "^0.3.78"
+writer = "^1.16.1"
 python-dotenv = "^1.1.1"
 
 
