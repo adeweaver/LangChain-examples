@@ -50,7 +50,7 @@ def generate_blog_plan(state: BlogState, config: RunnableConfig):
     import re
     
     # Extract JSON from the response
-    response_text = response.content
+    response_text = response.content if isinstance(response.content, str) else str(response.content)
     
     # Try to find JSON in the response - look for JSON block specifically
     json_match = re.search(r'```json\s*(\{.*?\})\s*```', response_text, re.DOTALL)
